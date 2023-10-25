@@ -1,0 +1,12 @@
+create database GenEmpID;
+create table Employees(ID varchar(15) primary key,Name varchar(20) Not Null,Joining_Date date Not Null,Dept_ID varchar(2) ,Sub_Dept_ID int);
+create table Departments(Sl_No int auto_increment primary key,Dept_Name varchar(30),Dept_ID varchar(2));
+create table Sub_Departments(Sl_No int auto_increment primary key,Sub_Dept_Name varchar(30),Sub_Dept_ID int,Dept_ID varchar(2));
+select a.Dept_ID,a.Dept_Name,b.Sub_Dept_Name,b.Sub_Dept_ID from departments as a left join sub_departments as b on a.Dept_ID=b.Dept_ID;
+select * from sub_departments;
+insert into Employees values("2002HR000011001","Kunal","2002-11-23","HR",0);
+drop table Employees;
+select a.dept_name from Departments as a left join sub_departments as b on a.Dept_Id=b.Dept_ID where b.sub_Dept_ID is null;
+insert into sub_departments(Sub_Dept_Name,Sub_Dept_ID,Dept_ID) values(null,0,"RD");
+update sub_departments set Sub_Dept_Name="Product Marketing" where Dept_ID="PM";
+select * from departments as a,sub_departments as b where a.dept_ID=b.Dept_ID;
